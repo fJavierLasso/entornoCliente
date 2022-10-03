@@ -15,3 +15,16 @@ function ejercicio1(){
     }
     
 }
+
+// Ejercicio 2
+
+const radio2 = document.getElementById("intRadio");
+
+function ejercicio2(){
+
+    if (radio2.value) {
+        resultados2.innerHTML = `El área que buscas es ${radio2.value*2}`;
+    } else {
+        resultados2.innerHTML = `Qué tal si rellenas los campos antes, crack?`;
+    }
+}
