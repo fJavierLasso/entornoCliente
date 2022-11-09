@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios 4.0</title>
+</head>
+<body>
+    <script>
+        let delegaciones = [[],[],[]];
+        let z = "";
+        
+        for (let i = 0; i < 3; i++) {
+            while (z !== 0) {
+                let empleado = prompt(`Introduce el nombre del empleado (del ${i})`);
+                if (empleado == 0) { break;}
+                let sueldo = prompt(`Introduce el sueldo del empleado (del ${i})`);
+                if (sueldo == 0) { break;} else { delegaciones[i].push([empleado, sueldo]);}
+            }
+        }
+
+        function mediaSueldos(numDel) {
+            let media = 0;
+            for (let i = 0; i < delegaciones[numDel].length; i++) {
+                media += parseFloat(delegaciones[numDel][i][1]);
+            }
+            return media / delegaciones[numDel].length;
+        }
+
+        function lowestSueldo(numDel) {
+            let lowest = parseInt(delegaciones[numDel][0][1]);
+            for (let i = 0; i < delegaciones[numDel].length; i++) {
+                if (parseInt(delegaciones[numDel][i][1]) < lowest) {
+                    lowest = delegaciones[numDel][i][1];
+                }
+            }
+            return lowest;
+        }
+
+        document.write(`
+        1. Tamaño delegacion 1: ${delegaciones[0].length}. Tamaño delegacion 2: ${delegaciones[1].length}. Tamaño delegacion 3: ${delegaciones[2].length}.<br>
+        2. Media sueldos delegacion 1: ${mediaSueldos(0)}. Media sueldos delegacion 2: ${mediaSueldos(1)}. Media sueldos delegacion 3: ${mediaSueldos(2)}.<br>
+        3. Delegacion1 con sueldos ordenados de menor a mayor: ${delegaciones[0].sort((a,b) => a[1] - b[1])}.<br>
+        4. Delegacion2 con sueldos ordenados de mayor a menor: ${delegaciones[1].sort((a,b) => b[1] - a[1])}.<br>
+        5. Delegacion3 con sueldos ordenados de mayor a menor: ${delegaciones[2].sort((a,b) => b[1] - a[1])}.<br>
+        6. El menor sueldo de la delegacion 1 es: ${lowestSueldo(0)}. El menor sueldo de la delegacion 2 es: ${lowestSueldo(1)}. El menor sueldo de la delegacion 3 es: ${lowestSueldo(2)}.<br>
+        Con cariño, Javier Lasso
+        `);
+
+    </script>
+</body>
+</html>
